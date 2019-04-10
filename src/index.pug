@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		title testTask
+	body
+	include components/content
+		header
+			each val in card
+				- var url = './assets/img/'+val.avatarName+'.png';
+				p= val.activity
+				p= val.date
+				p= val.avatarName
+				img(class='avatar' src=require(val.avatarName))
+		//- p=  url
+//- img()
+		a(href="/#{url}")
+
+		require('./assets/img/IvanZymbytsky.png')
+			img(src=require(), alt="avatar1")
+			//- +activityCard(card)
+			//- .avatar
+				.online
+					//- img(src=require('./assets/img/IvanZymbytsky.png'), alt="IvanZymbytsky")
+					//- +list(about)
