@@ -1,5 +1,7 @@
 @import "./scss/global";
-
+#arrow_down:hover {
+	stroke: red;
+}
 html {
   line-height: $mainLineHeight;
 	font-size: $mainFontSize;
@@ -28,7 +30,7 @@ body {
 
 *, *:before, *:after { box-sizing: border-box; }
 
-h1, h2, h3, h4, h5, h6 { margin: 0; }
+h1, h2, h3, h4, h5, h6, p { margin: 0; }
 
 a {
 	text-decoration: none;
@@ -40,67 +42,180 @@ ul, li {
   padding: 0;
 }
 
-section, .section {
-  position: relative;
-  padding: 40px 0;
-  @media screen and (max-width: $desktopWidth) {
-    padding: 36px 0;
-  }
-  @media screen and (max-width: $desktopWidth) {
-    padding: 28px 0;
-  }
-  @media screen and (max-width: $desktopWidth) {
-    padding: 20px 0;
-  }
+// section, .section {
+//   position: relative;
+//   padding: 40px 0;
+//   @media screen and (max-width: $desktopWidth) {
+//     padding: 36px 0;
+//   }
+//   @media screen and (max-width: $desktopWidth) {
+//     padding: 28px 0;
+//   }
+//   @media screen and (max-width: $desktopWidth) {
+//     padding: 20px 0;
+//   }
+// }
+
+// .wrapper {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+//   margin: 0 auto;
+// }
+
+// .content-wrapper {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+// }
+
+// .container {
+//   width: 100%;
+//   flex: 0 0 auto;
+//   position: relative;
+//   max-width: $desktopWidth;
+//   margin: 0 auto;
+//   @media screen and (max-width: $smDesktopWidth) {
+//     max-width: tableWidth;
+//   }
+//   @media screen and (max-width: $tableWidth) {
+//     max-width: phoneWidth;
+//   }
+//   @media screen and (max-width: $phoneWidth) {
+//     max-width: smPhoneWidth;
+//   }
+// }
+
+.main {
+	min-width: 1024px;
+	min-height: 600px;
+	display: flex;
+	background-color: #F1F1F1;
 }
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0 auto;
+.sidebar {
+	width: 129px;
+	min-height: 600px;
+	display: flex;
+	background-color: #20282E;
+	flex-direction: column;
 }
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.container {
-  width: 100%;
-  flex: 0 0 auto;
-  position: relative;
-  max-width: $desktopWidth;
-  margin: 0 auto;
-  @media screen and (max-width: $smDesktopWidth) {
-    max-width: tableWidth;
-  }
-  @media screen and (max-width: $tableWidth) {
-    max-width: phoneWidth;
-  }
-  @media screen and (max-width: $phoneWidth) {
-    max-width: smPhoneWidth;
-  }
-}
-
-
-.avatar {
-	@include size(41px);
-	position: relative;
-	div {
-		@include size(8px);
-		position: absolute;
-		border: 2px solid #fff;
-		border-radius: 50%;
-		box-sizing: content-box;
-		top: 0;
+.dashboard {
+	@include size(100%);
+	header {
+		display: flex;
+		justify-content: space-between;
+		height: 99px;
+		div {
+			display: flex;
+		}
+		.refresh {
+			@include size(40px);
+			border-radius: 50%;
+			background-color: $warning-color;
+			color: $primary-background;
+			background-image: url("./assets/img/undo-arrow.svg");
+			background-position: 46% 50%;
+			background-size: 17px 17px;
+			background-repeat: no-repeat;
+			svg {
+				stroke: white;
+			}
+		}
+		.breadcrumbs {
+			@include size(114px, 40px);
+			border: 1px solid #AFC1D4;
+			border-radius: 20px;
+		}
+		.status {
+			@include size(40px);
+			border-radius: 50%;
+			background-color: $success-color;
+			background-image: url("./assets/img/arrow_down.svg");
+			background-position: 50% 50%;
+			background-size: 10px 10px;
+			background-repeat: no-repeat;
+		}
+		.chat {
+			@include size(173px,40px);
+			border: 1px solid #AFC1D4;
+			border-radius: 20px;
+			position: relative;
+			.isonline {
+				margin: auto;
+				text-transform: uppercase;
+				font-size: 13px;
+				&::before {
+					content: '';
+					background-image: url("./assets/img/icon_chat.svg");
+					width: 18px;
+					height: 18px;
+					position: absolute;
+					background-size: cover;
+					left: 10px;
+					// content: url("./assets/img/icon_chat.svg");
+					// @include size(18px);
+				}
+				&::after {
+					content: '';
+					background-image: url("./assets/img/arrow_down_grey.svg");
+					width: 10px;
+					height: 10px;
+					position: absolute;
+					background-size: cover;
+					left: 145px;
+					top: 13px;
+					// content: url("./assets/img/icon_chat.svg");
+					// @include size(18px);
+				}
+			}
+		}
 	}
-	.online {
-		background-color: #aacc4e;
-	}
-	.offline {
-		background-color: #c5c5c5;
+}
+
+.activityBoard {
+	width: 385px;
+	min-height: 360px;
+	box-shadow: -0.6px 0.8px 4px 0 rgba(0, 0, 0, 0.11);
+	border: solid 1px rgba(212, 212, 212, 0.81);
+	border-radius: 4px;
+	
+	.card {
+		display: flex;
+		border-bottom: 1px solid rgba(212, 212, 212, 0.81);
+		// border-top: none;
+		// border-left: none;
+		// border-right: none;
+		height: 91px;
+		align-items: center;
+		&:last-child {
+			border: none;
+		}
+		.photo {
+			@include size(41px);
+			position: relative;
+			margin: 0 10px 0 29px;
+		}
+		.online, .offline {
+			@include size(8px);
+			position: absolute;
+			border: 2px solid #fff;
+			border-radius: 50%;
+			box-sizing: content-box;
+			top: 0;
+		}
+		.online {
+			background-color: #aacc4e;
+		}
+		.offline {
+			background-color: #c5c5c5;
+		}
+		
 	}
 
+	.archivButton {
+		width: 100%;
+		height: 54px;
+		padding-top: 20px;
+		padding-left: 29px;
+	}
 }

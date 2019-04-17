@@ -1,0 +1,10 @@
+mixin activityCard(some)
+	.activityList
+		each val in some
+			.card
+				.photo
+					img(src=require("./assets/img/"+val.avatarName+".png"))
+					div(class=val.status)
+				div
+					p= val.activity
+					p= val.date
